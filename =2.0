@@ -1,0 +1,13 @@
+Collecting drf-base64
+  Using cached drf_base64-2.0.tar.gz (3.7 kB)
+Requirement already satisfied: Django>=2.0 in c:\dev_yandex\final\foodgram\venv\lib\site-packages (from drf-base64) (3.2.3)
+Requirement already satisfied: djangorestframework<4.0.0 in c:\dev_yandex\final\foodgram\venv\lib\site-packages (from drf-base64) (3.12.4)
+Requirement already satisfied: sqlparse>=0.2.2 in c:\dev_yandex\final\foodgram\venv\lib\site-packages (from Django>=2.0->drf-base64) (0.5.3)
+Requirement already satisfied: asgiref<4,>=3.3.2 in c:\dev_yandex\final\foodgram\venv\lib\site-packages (from Django>=2.0->drf-base64) (3.8.1)
+Requirement already satisfied: pytz in c:\dev_yandex\final\foodgram\venv\lib\site-packages (from Django>=2.0->drf-base64) (2024.2)
+Requirement already satisfied: typing-extensions>=4 in c:\dev_yandex\final\foodgram\venv\lib\site-packages (from asgiref<4,>=3.3.2->Django>=2.0->drf-base64) (4.12.2)
+Using legacy 'setup.py install' for drf-base64, since package 'wheel' is not installed.
+Installing collected packages: drf-base64
+    Running setup.py install for drf-base64: started
+    Running setup.py install for drf-base64: finished with status 'done'
+Successfully installed drf-base64-2.0
