@@ -112,14 +112,16 @@ jobs:
             sudo mkdir -p foodgram/frontend
             sudo mkdir -p foodgram/infra
 
-      - name: Copy specific project files using rsync
-        run: |
-          rsync -avz -e "ssh -i ${{ secrets.SSH_KEY }}" --exclude '.git' \
-          infra/docker-compose.yml \
-          infra/default.conf \
-          docs/openapi-schema.yml \
-          docs/redoc.html \
-          ${{ secrets.SSH_USER }}@${{ secrets.HOST }}:/home/${{ secrets.SSH_USER }}/foodgram/
+      - name: Copy project files
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          source: "infra/docker-compose.yml,infra/default.conf,docs/openapi-schema.yml,docs/redoc.html"
+          target: foodgram/
+          strip_components: 1
 
       - name: Setup environment and deploy
         uses: appleboy/ssh-action@master
