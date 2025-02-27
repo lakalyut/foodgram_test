@@ -133,10 +133,10 @@ jobs:
           script: |
             cd foodgram/
             # Перемещаем файлы в нужные директории
-            mv openapi-schema.yml docs/
-            mv redoc.html docs/
-            mv docker-compose.yml infra/
-            mv default.conf infra/
+            sudo mv openapi-schema.yml docs/
+            sudo mv redoc.html docs/
+            sudo mv docker-compose.yml infra/
+            sudo mv default.conf infra/
             
             # Создаем и настраиваем .env файл
             cd infra/
