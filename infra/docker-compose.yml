@@ -6,7 +6,7 @@ volumes:
 
 services:
 
-  foodgram:
+  db:
     image: postgres:13.10
     restart: always
     volumes:
@@ -24,13 +24,13 @@ services:
       - static_value:/app/static/
       - media_value:/app/media/
     depends_on:
-      - foodgram
+      - db
     env_file:
       - ./.env
     networks:
       - foodgram-network
     environment:
-      - DB_HOST=foodgram
+      - DB_HOST=db
 
   frontend:
     image: lakalyut/foodgram_frontend:latest
