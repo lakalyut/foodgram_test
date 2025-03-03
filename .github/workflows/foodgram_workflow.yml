@@ -159,3 +159,4 @@ jobs:
             Коммит: ${{ github.event.head_commit.message }}
             Ветка: ${{ github.ref }}
             Автор: ${{ github.actor }}
+
