@@ -84,7 +84,7 @@ class Command(BaseCommand):
 
                     with open(image_path, 'rb') as img_file:
                         recipe.image.save(
-                            f'test_pic{image_index}.jpg',
+                            f'test_pic_{image_index}.jpg',
                             File(img_file),
                             save=True,
                         )
