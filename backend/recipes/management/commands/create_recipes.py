@@ -67,7 +67,7 @@ class Command(BaseCommand):
 
                     image_index = recipe_data_index + 1
                     image_path = os.path.join(
-                        image_folder, f'test_pic_{image_index}.jpg'
+                        image_folder, f'test_pic{image_index}.jpg'
                     )
                     if not os.path.exists(image_path):
                         self.stdout.write(
@@ -84,7 +84,7 @@ class Command(BaseCommand):
 
                     with open(image_path, 'rb') as img_file:
                         recipe.image.save(
-                            f'test_pic_{image_index}.jpg',
+                            f'test_pic{image_index}.jpg',
                             File(img_file),
                             save=True,
                         )
