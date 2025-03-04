@@ -34,7 +34,7 @@ class Command(BaseCommand):
 
         if not os.path.exists(image_folder):
             self.stdout.write(
-                self.style.ERROR(f'Папк {image_folder} отсутствует')
+                self.style.ERROR(f'Папка {image_folder} отсутствует')
             )
             return
 
@@ -67,7 +67,7 @@ class Command(BaseCommand):
 
                     image_index = recipe_data_index + 1
                     image_path = os.path.join(
-                        image_folder, f'test_pic{image_index}.jpg'
+                        image_folder, f'test_pic_{image_index}.jpg'
                     )
                     if not os.path.exists(image_path):
                         self.stdout.write(
