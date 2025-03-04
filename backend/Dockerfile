@@ -8,4 +8,4 @@ RUN apt-get update && apt-get upgrade -y && \
 
 COPY . ./
 
-CMD ["gunicorn", "foodgram.wsgi:application", "--bind", "0:8080"]
+CMD gunicorn --bind 0.0.0.0:8080 foodgram.wsgi:application
