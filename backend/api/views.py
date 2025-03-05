@@ -37,7 +37,7 @@ User = get_user_model()
 class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
     """Подписка и отписка от пользователя."""
 
-    permission_classes = (IsAuthenticated)
+    permission_classes = (IsAuthenticated,)
     serializer_class = SubscriptionSerializer
 
     def get_author(self):
@@ -45,22 +45,22 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
         author_id = self.kwargs.get('user_id')
         return get_object_or_404(User, id=author_id)
 
-    def create(self, requset, *args, **kwargs):
+    def create(self, request, *args, **kwargs):
         author = self.get_author()
-        if requset.user.id == author.id:
+        if request.user.id == author.id:
             return Response(
                 {'errors': constants.ERROR_SELF_SUBSCRIBE},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        if requset.user.follower.filter(author=author).exists():
+        if request.user.follower.filter(author=author).exists():
             return Response(
                 {'errors': constants.ERROR_ALREADY_SUBSCRIBED},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         subscription = Subscribe.objects.create(
-            user=requset.user, author=author
+            user=request.user, author=author
         )
 
         serializer = self.get_serializer(subscription)
@@ -68,7 +68,7 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         author = self.get_object()
-        subscription = Subscribe.object.filter(
+        subscription = Subscribe.objects.filter(
             user=request.user, author=author
         )
 
@@ -197,11 +197,12 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         if self.request.user.is_authenticated:
             queryset = queryset.annotate(
-                is_favorited=Exists(
-                    self.request.user.favorite_recipes.filter(
-                        recipe=OuterRef('id')
-                    )
-                ),
+                is_favorited=False,
+                #Exists(
+                    #self.request.user.favorite_recipes.filter(
+                        #recipe=OuterRef('id')
+                    #)
+                #),
                 is_in_shopping_cart=Exists(
                     self.request.user.shopping_cart.recipe.filter(
                         id=OuterRef('id')
@@ -238,12 +239,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-    @action(
-        detail=True,
-        methods=['get'],
-        url_path='get-link',
-        permission_classes=[AllowAny],
-    )
     @action(
         detail=True,
         methods=['get'],

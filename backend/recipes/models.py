@@ -28,8 +28,8 @@ class Tag(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Тег',
-        verbose_name_plural = 'Теги',
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
         ordering = ['-id']
 
     def __str__(self):
@@ -37,10 +37,10 @@ class Tag(models.Model):
 
 
 class Ingredient(models.Model):
-    """Модель для ингридиентов."""
+    """Модель для ингредиентов."""
 
     name = models.CharField(
-        'Название ингридиента',
+        'Название ингредиента',
         max_length=constants.INGREDIENT_NAME_FIELD_LENGTH
     )
     measurement_unit = models.CharField(
@@ -49,8 +49,8 @@ class Ingredient(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Ингредиент',
-        verbose_name_plural = 'Ингредиенты',
+        verbose_name = 'Ингредиент'
+        verbose_name_plural = 'Ингредиенты'
         ordering = ['name']
 
     def __str__(self):
@@ -63,7 +63,7 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='recipe',
+        related_name='recipes',
         verbose_name='Автор'
     )
     name = models.CharField(
@@ -98,8 +98,8 @@ class Recipe(models.Model):
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Рецепт',
-        verbose_name_plural = 'Рецепты',
+        verbose_name = 'Рецепт'
+        verbose_name_plural = 'Рецепты'
         ordering = ['-pub_date']
 
     def __str__(self):
@@ -107,13 +107,13 @@ class Recipe(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    """Модель для связи инигридиентов с рецептами."""
+    """Модель для связи ингредиентов с рецептами."""
 
     recipe = models.ForeignKey(
-        Recipe, on_delete=models.CASCADE, related_name='recipe'
+        Recipe, on_delete=models.CASCADE, related_name='recipe_ingredients'
     )
     ingredient = models.ForeignKey(
-        Ingredient, on_delete=models.CASCADE, related_name='ingredient'
+        Ingredient, on_delete=models.CASCADE, related_name='recipe_ingredients'
     )
     amount = models.PositiveSmallIntegerField(
         verbose_name='Количество',
@@ -131,8 +131,8 @@ class RecipeIngredient(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Количество ингредиента',
-        verbose_name_plural = 'Количество ингредиентов',
+        verbose_name = 'Количество ингредиента'
+        verbose_name_plural = 'Количество ингредиентов'
         ordering = ['-id']
         constraints = [
             models.UniqueConstraint(
@@ -159,11 +159,11 @@ class Subscribe(models.Model):
         related_name='following',
         verbose_name='Автор'
     )
-    created = models.DateTimeField('Дата подписки', auto_created=True)
+    created = models.DateTimeField('Дата подписки', auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Подписка',
-        verbose_name_plural = 'Подписки',
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
         ordering = ['-id']
         constraints = [
             models.UniqueConstraint(
@@ -181,19 +181,19 @@ class FavoriteRecipe(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='fvorite_recipec',
+        related_name='fvorite_recipes',
         verbose_name='Пользователь'
     )
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
         related_name='favorited_by',
-        verbose_name='Избранный инструмент'
+        verbose_name='Избранный рецепт'
     )
 
     class Meta:
-        verbose_name = 'Подписка',
-        verbose_name_plural = 'Подписки',
+        verbose_name = 'Избранный рецепт'
+        verbose_name_plural = 'Избранные рецепты'
         ordering = ['-id']
         constraints = [
             models.UniqueConstraint(
@@ -202,7 +202,7 @@ class FavoriteRecipe(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.user} добавил {self.author} в избранное'
+        return f'{self.user} добавил {self.recipe.name} в избранное'
 
 
 class ShoppingCart(models.Model):
@@ -232,6 +232,6 @@ class ShoppingCart(models.Model):
     @staticmethod
     @receiver(post_save, sender=User)
     def create_shopping_cart(sender, instance, created, **kwargs):
-        """Создание объекта коризины при создании пользователя"""
+        """Создание объекта корзины при создании пользователя"""
         if created:
             return ShoppingCart.objects.create(user=instance)
