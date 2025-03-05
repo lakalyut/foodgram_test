@@ -198,11 +198,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if self.request.user.is_authenticated:
             queryset = queryset.annotate(
                 is_favorited=False,
-                #Exists(
-                    #self.request.user.favorite_recipes.filter(
-                        #recipe=OuterRef('id')
-                    #)
-                #),
                 is_in_shopping_cart=Exists(
                     self.request.user.shopping_cart.recipe.filter(
                         id=OuterRef('id')
