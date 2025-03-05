@@ -201,13 +201,14 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
             queryset = queryset.annotate(
                 is_favorited=Exists(
-                user.favorite_recipes.filter(recipe=OuterRef('id'))
-            ) if hasattr(user, 'favorite_recipes') else Value(False),
-            is_in_shopping_cart=Exists(
-                user.shopping_cart.recipe.filter(id=OuterRef('id'))
-            ) if shopping_cart_exists else Value(False),
-        )
-    
+                    user.favorite_recipes.filter(recipe=OuterRef('id'))
+                )
+                if hasattr(user, 'favorite_recipes') else Value(False),
+                is_in_shopping_cart=Exists(
+                    user.shopping_cart.recipe.filter(id=OuterRef('id'))
+                )
+                if shopping_cart_exists else Value(False),
+            )
         else:
             queryset = queryset.annotate(
                 is_in_shopping_cart=Value(False), is_favorited=Value(False)
