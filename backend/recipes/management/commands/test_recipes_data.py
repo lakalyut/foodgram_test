@@ -12,7 +12,7 @@ TEST_RECIPES = [
             ('болгарский перец', 50),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_1.jpg',
+        'image': 'test_pic1.jpg',
     },
 
     {
@@ -26,7 +26,7 @@ TEST_RECIPES = [
             ('лапша', 30),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_2.jpg',
+        'image': 'test_pic2.jpg',
     },
 
     {
@@ -40,7 +40,7 @@ TEST_RECIPES = [
             ('картофель', 200),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_3.jpg',
+        'image': 'test_pic3.jpg',
     },
 
     {
@@ -53,7 +53,7 @@ TEST_RECIPES = [
             ('мёд', 10),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_4.jpg',
+        'image': 'test_pic4.jpg',
     },
 
     {
@@ -67,7 +67,7 @@ TEST_RECIPES = [
             ('мука', 30),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_5.jpg',
+        'image': 'test_pic5.jpg',
     },
 
     {
@@ -81,7 +81,7 @@ TEST_RECIPES = [
             ('морковь', 50),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_6.jpg',
+        'image': 'test_pic6.jpg',
     },
 
     {
@@ -95,7 +95,7 @@ TEST_RECIPES = [
             ('шампиньоны', 100),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_7.jpg',
+        'image': 'test_pic7.jpg',
     },
 
     {
@@ -109,7 +109,7 @@ TEST_RECIPES = [
             ('яйцо', 1),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_8.jpg',
+        'image': 'test_pic8.jpg',
     },
 
     {
@@ -123,7 +123,7 @@ TEST_RECIPES = [
             ('мука', 50),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_9.jpg',
+        'image': 'test_pic9.jpg',
     },
 
     {
@@ -137,7 +137,7 @@ TEST_RECIPES = [
             ('кабачок', 50),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_10.jpg',
+        'image': 'test_pic10.jpg',
     },
 
     {
@@ -151,7 +151,7 @@ TEST_RECIPES = [
             ('чеснок', 5),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_11.jpg',
+        'image': 'test_pic11.jpg',
     },
 
     {
@@ -165,7 +165,7 @@ TEST_RECIPES = [
             ('лук', 50),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_12.jpg',
+        'image': 'test_pic12.jpg',
     },
 
     {
@@ -179,7 +179,7 @@ TEST_RECIPES = [
             ('морковь', 50),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_13.jpg',
+        'image': 'test_pic13.jpg',
     },
 
     {
@@ -193,7 +193,7 @@ TEST_RECIPES = [
             ('болгарский перец', 50),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_14.jpg',
+        'image': 'test_pic14.jpg',
     },
 
     {
@@ -207,7 +207,7 @@ TEST_RECIPES = [
             ('лук', 50),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_15.jpg',
+        'image': 'test_pic15.jpg',
     },
 
     {
@@ -220,7 +220,7 @@ TEST_RECIPES = [
             ('огурец', 50),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_16.jpg',
+        'image': 'test_pic16.jpg',
     },
 
     {
@@ -234,7 +234,7 @@ TEST_RECIPES = [
             ('лук', 50),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_17.jpg',
+        'image': 'test_pic17.jpg',
     },
 
     {
@@ -248,7 +248,7 @@ TEST_RECIPES = [
             ('шампиньоны', 100),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_18.jpg',
+        'image': 'test_pic18.jpg',
     },
 
     {
@@ -262,7 +262,7 @@ TEST_RECIPES = [
             ('лук', 50),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_19.jpg',
+        'image': 'test_pic19.jpg',
     },
 
     {
@@ -276,7 +276,7 @@ TEST_RECIPES = [
             ('фарш', 150),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_20.jpg',
+        'image': 'test_pic20.jpg',
     },
 
     {
@@ -289,7 +289,7 @@ TEST_RECIPES = [
             ('сыр', 50),
         ],
         'tags': ['dinner'],
-        'image': 'test_pic_21.jpg',
+        'image': 'test_pic21.jpg',
     },
 
     {
@@ -303,7 +303,7 @@ TEST_RECIPES = [
             ('молоко', 150),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_22.jpg',
+        'image': 'test_pic22.jpg',
     },
 
     {
@@ -317,7 +317,7 @@ TEST_RECIPES = [
             ('сухарики', 30),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_23.jpg',
+        'image': 'test_pic23.jpg',
     },
 
     {
@@ -331,7 +331,7 @@ TEST_RECIPES = [
             ('сливки', 100),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_24.jpg',
+        'image': 'test_pic24.jpg',
     },
 
     {
@@ -359,7 +359,7 @@ TEST_RECIPES = [
             ('морковь', 50),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_26.jpg',
+        'image': 'test_pic26.jpg',
     },
 
     {
@@ -373,7 +373,7 @@ TEST_RECIPES = [
             ('петрушка', 10),
         ],
         'tags': ['lunch'],
-        'image': 'test_pic_27.jpg',
+        'image': 'test_pic27.jpg',
     },
 
     {
@@ -387,7 +387,7 @@ TEST_RECIPES = [
             ('мука', 30),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_28.jpg',
+        'image': 'test_pic28.jpg',
     },
 
     {
@@ -401,7 +401,7 @@ TEST_RECIPES = [
             ('яблоко', 50),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_29.jpg',
+        'image': 'test_pic29.jpg',
     },
 
     {
@@ -415,6 +415,6 @@ TEST_RECIPES = [
             ('яйцо', 1),
         ],
         'tags': ['breakfast'],
-        'image': 'test_pic_30.jpg',
+        'image': 'test_pic30.jpg',
     },
 ]
