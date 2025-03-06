@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 )
                 return
 
-        image_folder = ':8080/recipes/management/commands/test_pics/'
+        image_folder = '/recipes/management/commands/test_pics/'
 
         if not os.path.exists(image_folder):
             self.stdout.write(
