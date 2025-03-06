@@ -30,11 +30,11 @@ class Command(BaseCommand):
                 )
                 return
 
-        image_folder = '/recipes/management/commands/test_pics/'
+        image_folder = 'recipes/management/commands/test_pics/'
 
         if not os.path.exists(image_folder):
             self.stdout.write(
-                self.style.ERROR(f'Папка {image_folder} отсутствует')
+                self.style.ERROR(f'Папк {image_folder} отсутствует')
             )
             return
 
