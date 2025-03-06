@@ -3,6 +3,7 @@ import os
 from django.contrib.auth import get_user_model
 from django.core.files import File
 from django.core.management.base import BaseCommand
+from django.conf import settings
 
 from recipes.models import Ingredient, Recipe, RecipeIngredient, Tag
 from .test_recipes_data import TEST_RECIPES
@@ -30,7 +31,7 @@ class Command(BaseCommand):
                 )
                 return
 
-        image_folder = '/recipes/management/commands/test_pics/'
+        image_folder =  os.path.join(settings.BASE_DIR, 'recipes', 'management', 'commands', 'test_pics')
 
         if not os.path.exists(image_folder):
             self.stdout.write(
@@ -88,6 +89,7 @@ class Command(BaseCommand):
                             File(img_file),
                             save=True,
                         )
+                        recipe.save()
 
                     for tag_slug in recipe_data['tags']:
                         tag = Tag.objects.get(slug=tag_slug)
