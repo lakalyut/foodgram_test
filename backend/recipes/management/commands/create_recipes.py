@@ -31,7 +31,9 @@ class Command(BaseCommand):
                 )
                 return
 
-        image_folder =  os.path.join(settings.BASE_DIR, 'recipes', 'management', 'commands', 'test_pics')
+        image_folder = os.path.join(
+            settings.BASE_DIR, 'recipes', 'management', 'commands', 'test_pics'
+        )
 
         if not os.path.exists(image_folder):
             self.stdout.write(
