@@ -53,7 +53,7 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        if request.user.follower.filter(author=author).exists():
+        if request.user.following.filter(author=author).exists():
             return Response(
                 {'errors': constants.ERROR_ALREADY_SUBSCRIBED},
                 status=status.HTTP_400_BAD_REQUEST
@@ -67,7 +67,7 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def delete(self, request, *args, **kwargs):
-        author = self.get_object()
+        author = self.get_author()
         subscription = Subscribe.objects.filter(
             user=request.user, author=author
         )

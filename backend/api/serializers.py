@@ -400,7 +400,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
 
     def get_recipes_count(self, obj):
         """Получение количества рецептов автора."""
-        return obj.author.recipe.count()
+        return obj.author.recipes.count()
 
     def get_recipes(self, obj):
         """Получение рецептов автора с учетом лимита."""
