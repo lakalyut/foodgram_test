@@ -63,10 +63,10 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
             subscription = Subscribe.objects.create(user=request.user,
                                                     author=author)
             serializer = self.get_serializer(subscription,
-                                            context={'request': request})
+                                             context={'request': request})
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
+
         except Exception as e:
             return Response({'error': str(e)},
                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
