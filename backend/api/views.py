@@ -46,30 +46,25 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
         return get_object_or_404(User, id=author_id)
 
     def create(self, request, *args, **kwargs):
-        try:
-            author = self.get_author()
-            if request.user.id == author.id:
-                return Response(
-                    {'errors': constants.ERROR_SELF_SUBSCRIBE},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
+        author = self.get_author()
+        if request.user.id == author.id:
+            return Response(
+                {'errors': constants.ERROR_SELF_SUBSCRIBE},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
-            if request.user.following.filter(author=author).exists():
-                return Response(
-                    {'errors': constants.ERROR_ALREADY_SUBSCRIBED},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
+        if Subscribe.objects.filter(user=request.user, author=author).exists():
+            return Response(
+                {'errors': constants.ERROR_ALREADY_SUBSCRIBED},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
-            subscription = Subscribe.objects.create(user=request.user,
-                                                    author=author)
-            serializer = self.get_serializer(subscription,
-                                             context={'request': request})
+        subscription = Subscribe.objects.create(user=request.user,
+                                                author=author)
+        serializer = self.get_serializer(subscription,
+                                         context={'request': request})
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        except Exception as e:
-            return Response({'error': str(e)},
-                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def delete(self, request, *args, **kwargs):
         author = self.get_author()
