@@ -63,6 +63,8 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
             user=request.user, author=author
         )
 
+        subscription = Subscribe.objects.get(user=request.user, author=author)
+
         serializer = self.get_serializer(subscription)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
