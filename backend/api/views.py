@@ -269,7 +269,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         Представление для скачивания списка покупок в формате CSV.
         """
         shopping_cart = (
-            request.user.shopping_cart.recipe.values(
+            request.user.shopping_cart.recipe.all().values(
                 'ingredients__name', 'ingredients__measurement_unit'
             )
             .annotate(amount=Sum('recipeingredient__amount'))
