@@ -211,6 +211,7 @@ class ShoppingCart(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='shopping_cart',
+        null=True,
         verbose_name='Пользователь'
     )
     recipe = models.ManyToManyField(

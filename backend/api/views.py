@@ -47,6 +47,7 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
 
     def create(self, request, *args, **kwargs):
         author = self.get_author()
+        print(f"Пользователь {request.user} подписывается на {author}")
         if request.user.id == author.id:
             return Response(
                 {'errors': constants.ERROR_SELF_SUBSCRIBE},
@@ -58,13 +59,16 @@ class SubscriptionView(generics.CreateAPIView, generics.DestroyAPIView):
                 {'errors': constants.ERROR_ALREADY_SUBSCRIBED},
                 status=status.HTTP_400_BAD_REQUEST
             )
-
-        subscription = Subscribe.objects.create(user=request.user,
+        try:
+            subscription = Subscribe.objects.create(user=request.user,
                                                 author=author)
-        serializer = self.get_serializer(subscription,
+            serializer = self.get_serializer(subscription,
                                          context={'request': request})
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            print(f"Ошибка создания подписки: {e}")
+            return Response({'errors': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def delete(self, request, *args, **kwargs):
         author = self.get_author()
