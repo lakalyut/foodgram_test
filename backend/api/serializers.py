@@ -408,7 +408,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         if not request:
             return []
 
-        recipes = obj.author.recipe.all()
+        recipes = obj.author.recipes.all()
         recipes_limit = request.query_params.get('recipes_limit')
 
         if recipes_limit is not None:
