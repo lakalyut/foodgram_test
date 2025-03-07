@@ -272,7 +272,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             request.user.shopping_cart.recipe.values(
                 'ingredients__name', 'ingredients__measurement_unit'
             )
-            .annotate(amount=Sum('recipe__amount'))
+            .annotate(amount=Sum('recipeingredient__amount'))
             .order_by()
         )
         return generate_shopping_cart_csv(shopping_cart)

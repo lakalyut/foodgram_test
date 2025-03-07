@@ -430,7 +430,7 @@ class FavoriteRecipeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FavoriteRecipe
-        fields = ('recipe',)
+        fields = ['recipe']
 
     def validate(self, data):
         user = self.context['request'].user
@@ -455,7 +455,7 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShoppingCart
-        fields = ('recipe',)
+        fields = ['recipe']
 
     def validate(self, data):
         user = self.context['request'].user
@@ -470,7 +470,7 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = self.context['request'].user
         recipe = validated_data['recipe']
-        shopping_cart, _ = ShoppingCart.objects.get_or_create(user=user)
+        shopping_cart, created = ShoppingCart.objects.get_or_create(user=user)
         shopping_cart.recipe.add(recipe)
         return shopping_cart
 
