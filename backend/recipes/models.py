@@ -181,7 +181,7 @@ class FavoriteRecipe(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='fvorite_recipes',
+        related_name='favorite_recipes',
         verbose_name='Пользователь'
     )
     recipe = models.ForeignKey(
@@ -211,7 +211,6 @@ class ShoppingCart(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='shopping_cart',
-        null=True,
         verbose_name='Пользователь'
     )
     recipe = models.ManyToManyField(
